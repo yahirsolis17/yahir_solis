@@ -62,7 +62,6 @@ self.addEventListener('fetch', event => {
 });
 
 
- Elimina caché con código
  self.addEventListener('activate', event => {
      event.waitUntil(
          caches.keys()
@@ -73,4 +72,5 @@ self.addEventListener('fetch', event => {
          })
      );
  });
+
 
