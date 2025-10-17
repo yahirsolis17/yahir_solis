@@ -62,14 +62,15 @@ self.addEventListener('fetch', event => {
 });
 
 
-// Elimina caché con código
-// self.addEventListener('activate', event => {
-//     event.waitUntil(
-//         caches.keys()
-//         .then(keys => {
-//             keys.forEach(key => {
-//                 if (key === 'v3') caches.delete(key);
-//             });
-//         })
-//     );
-// });
+ Elimina caché con código
+ self.addEventListener('activate', event => {
+     event.waitUntil(
+         caches.keys()
+         .then(keys => {
+             keys.forEach(key => {
+                 if (key === 'v3') caches.delete(key);
+             });
+         })
+     );
+ });
+
