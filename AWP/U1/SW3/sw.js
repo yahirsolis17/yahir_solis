@@ -62,15 +62,15 @@ self.addEventListener('fetch', event => {
 });
 
 
- self.addEventListener('activate', event => {
-     event.waitUntil(
-         caches.keys()
-         .then(keys => {
-             keys.forEach(key => {
-                 if (key === 'v3') caches.delete(key);
-             });
-         })
-     );
- });
+// self.addEventListener('activate', event => {
+//     event.waitUntil(
+//         caches.keys()
+//         .then(keys => {
+//             keys.forEach(key => {
+//                 if (key === 'v3') caches.delete(key);
+//             });
+//         })
+//     );
+ //1});
 
 
