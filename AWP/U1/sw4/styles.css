@@ -1,60 +1,136 @@
-/* Estilos simples y consistentes con tus ejemplos previos */
+/* Estilos suaves, minimalistas y consistentes con el tema de fotografía */
 * { box-sizing: border-box; }
+
+:root {
+    --bg-1: #f7fbff;
+    --bg-2: #f2f6fb;
+    --bg-3: #eef2f7;
+    --surface: #ffffff;
+    --text: #253047;
+    --muted: #667085;
+    --primary: #0078d7;
+    --primary-600: #005a9e;
+    --shadow-sm: 0 3px 12px rgba(16,24,40,0.06);
+    --shadow-md: 0 10px 30px rgba(16,24,40,0.06), 0 2px 8px rgba(16,24,40,0.05);
+    --radius: 14px;
+}
+
+html { scroll-behavior: smooth; }
 
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
-    background: #f4f4f4;
-    color: #333;
+    color: var(--text);
+    line-height: 1.6;
+    background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 48%, var(--bg-3) 100%);
 }
 
-header { padding: 24px 16px; }
+/* Contenedor fluido sin cambiar HTML */
+header, .nav, main, footer {
+    max-width: 980px;
+    margin-inline: auto;
+}
 
+/* Tarjetas/superficies sutiles */
+header, main, .cta, footer {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+header { padding: 26px 18px; margin: 26px 16px 12px; animation: fade-in 480ms ease-out both; }
+
+.nav { margin: 10px 16px; padding: 6px 10px; background: var(--surface); border-radius: 12px; box-shadow: var(--shadow-sm); }
 .nav ul {
     display: flex;
-    gap: 16px;
+    gap: 18px;
     justify-content: center;
     list-style: none;
-    padding: 0;
-    margin: 0 0 12px 0;
+    padding: 6px 8px;
+    margin: 0;
 }
 
+/* Subrayado animado en enlaces */
 .nav a {
     text-decoration: none;
-    color: #0078d7;
-    font-weight: bold;
+    color: var(--primary);
+    font-weight: 700;
+    position: relative;
+    padding: 6px 2px;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 2px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 220ms ease, color 220ms ease;
 }
+.nav a:hover { color: var(--primary-600); background-size: 100% 2px; }
 
-.nav a:hover { text-decoration: underline; }
-
-.cta { margin: 16px; }
+.cta { 
+    margin: 16px; 
+    padding: 12px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+    justify-content: center; 
+}
 
 button {
     padding: 10px 16px;
-    background: #0078d7;
-    color: white;
+    background: var(--primary);
+    color: #fff;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     margin: 4px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 120ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+button:hover { background: var(--primary-600); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+button:active { transform: translateY(0); }
+button:focus-visible, .nav a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+main { 
+    padding: 18px 18px 24px; 
+    margin: 12px 16px 18px; 
+    animation: fade-in 520ms ease-out both;
 }
 
-button:hover { background: #005a9e; }
-
-main { padding: 0 16px 24px; }
-
 .hero {
-    width: min(90%, 720px);
+    width: min(92%, 760px);
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    margin: 16px auto;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    margin: 18px auto;
     display: block;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fade-up 600ms ease-out 80ms forwards;
 }
 
 footer {
     padding: 16px;
-    background: #fff;
+    margin: 0 16px 24px;
     border-top: 1px solid #e7e7e7;
+    animation: fade-in 560ms ease-out both;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+h1, h2 { margin: 8px 0 6px; }
+p { margin: 10px 0; color: var(--muted); }
+
+/* Animaciones sutiles */
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Respeto a usuarios con reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
 }
