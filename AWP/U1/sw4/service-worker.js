@@ -12,9 +12,9 @@ const cacheAssets = [
     "styles.css",
     "main.js",
     "service-worker.js",
-    "imagen1.jpg",
-    "imagen2.jpg",
-    "imagen3.jpg",
+    "imagen1.png",
+    "imagen2.png",
+    "imagen3.png",
     "logo.png"
 ];
 
