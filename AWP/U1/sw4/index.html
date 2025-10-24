@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fotografía como Pasatiempo - SW4</title>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+    <header>
+        <h1>Fotografía como Pasatiempo</h1>
+        <p>Explora composición, equipo y edición. Este sitio funciona con Service Worker.</p>
+        <img src="./logo.png" alt="Logo de fotografía" width="140" height="140" />
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="./index.html">Inicio</a></li>
+            <li><a href="./pagina1.html">Composición</a></li>
+            <li><a href="./pagina2.html">Equipo</a></li>
+            <li><a href="./pagina3.html">Edición</a></li>
+        </ul>
+    </nav>
+
+    <section class="cta">
+        <button id="check">Ver estado del SW</button>
+        <button id="btnPermiso">Activar notificaciones</button>
+        <button id="btnNotificacion">Probar notificación</button>
+        <button onclick="location.href='../index.html'">Página principal (U1)</button>
+    </section>
+
+    <main>
+        <h2>¿Por qué la fotografía?</h2>
+        <p>La fotografía es una forma creativa de contar historias con luz, encuadre y paciencia. Ideal para practicar en cualquier lugar.</p>
+    </main>
+
+    <footer>
+        <small>SW4 • Fotografía • Hecho para prácticas de Service Worker</small>
+    </footer>
+
+    <script src="./main.js"></script>
+</body>
+</html>
