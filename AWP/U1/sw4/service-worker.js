@@ -4,7 +4,7 @@ const DYNAMIC_CACHE = "sw4-dynamic-v1";
 
 // Archivos que se guardarán en caché (precarga)
 const cacheAssets = [
-    "./",               // raíz de SW4 (opcional si ya incluyes index explícito)
+    "./",               
     "index.html",
     "pagina1.html",
     "pagina2.html",
@@ -20,27 +20,27 @@ const cacheAssets = [
 
 // Instalación: precache de assets estáticos
 self.addEventListener("install", (event) => {
-    console.log("SW4: Instalando...");
+    console.log("SW: Instalando");
     event.waitUntil(
         caches.open(STATIC_CACHE)
             .then((cache) => {
-                console.log("SW4: Cacheando assets estáticos...");
+                console.log("SW: Cacheando archivos...");
                 return cache.addAll(cacheAssets);
             })
             .then(() => self.skipWaiting())
-            .catch((err) => console.log("SW4: Error al cachear assets:", err))
+            .catch((err) => console.log("Error al cachear archivos", err))
     );
 });
 
 // Activación: limpieza de caches viejos y toma de control
 self.addEventListener("activate", (event) => {
-    console.log("SW4: Activado.");
+    console.log("SW: Activado");
     event.waitUntil(
         caches.keys().then((keys) =>
             Promise.all(
                 keys.map((key) => {
                     if (key !== STATIC_CACHE && key !== DYNAMIC_CACHE) {
-                        console.log(`SW4: Eliminando cache viejo: ${key}`);
+                        console.log(`SW: Eliminando cache antigua: ${key}`);
                         return caches.delete(key);
                     }
                 })
@@ -51,11 +51,10 @@ self.addEventListener("activate", (event) => {
 
 // Mensajes desde la página (para notificaciones locales)
 self.addEventListener("message", (event) => {
-    // console.log("SW4: Mensaje recibido:", event.data);
     if (event.data === "mostrar-notificacion") {
         // Mostrar notificación local desde el SW (aparece en Centro de Notificaciones de Windows)
-        self.registration.showNotification("Fotografía: ¡lista para disparar!", {
-            body: "Notificación local sin servidor push. ¡Captura el momento!",
+        self.registration.showNotification("Notificacion local", {
+            body: "Esta es una prueba sin servidor push.",
             icon: "logo.png",
             // badge opcional (blanco/negro 72x72): badge: "logo.png",
             vibrate: [50, 50, 50],
@@ -65,7 +64,7 @@ self.addEventListener("message", (event) => {
     }
 });
 
-// Estrategia NETWORK-FIRST con fallback a CACHÉ y caché dinámico
+// Estrategia NETWORK-FIRST con fallback a caché y caché dinámico
 self.addEventListener("fetch", (event) => {
     const { request } = event;
 
@@ -97,3 +96,4 @@ self.addEventListener("fetch", (event) => {
             })
     );
 });
+

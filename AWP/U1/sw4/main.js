@@ -2,8 +2,8 @@
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker
         .register("./service-worker.js")
-        .then((reg) => console.log("Service Worker registrado:", reg))
-        .catch((err) => console.log("Error al registrar el SW:", err));
+        .then((reg) => console.log("Service Worker registrado", reg))
+        .catch((err) => console.log("Fallo el registro del Service Worker", err));
 }
 
 // Botón para verificar el estado del SW
@@ -24,7 +24,7 @@ document.getElementById("btnPermiso").addEventListener("click", async () => {
     try {
         const perm = await Notification.requestPermission();
         if (perm === "granted") {
-            console.log("Permiso de notificaciones concedido.");
+            console.log("Permiso para notificaciones concedido");
             alert("Permiso concedido. Ahora puedes probar la notificación.");
         } else if (perm === "denied") {
             alert("Permiso de notificaciones denegado.");
@@ -32,7 +32,7 @@ document.getElementById("btnPermiso").addEventListener("click", async () => {
             alert("La solicitud de permisos fue descartada.");
         }
     } catch (e) {
-        console.log("Error al solicitar permiso de notificaciones:", e);
+        console.log("Error al solicitar permiso de notificaciones", e);
     }
 });
 
@@ -56,6 +56,6 @@ document.getElementById("btnNotificacion").addEventListener("click", async () =>
         // Enviar mensaje al Service Worker para que muestre la notificación
         navigator.serviceWorker.controller.postMessage("mostrar-notificacion");
     } catch (e) {
-        console.log("No se pudo comunicar con el SW:", e);
+        console.log("Error al comunicar con el Service Worker", e);
     }
 });
