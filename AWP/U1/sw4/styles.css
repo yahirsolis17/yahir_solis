@@ -1,18 +1,16 @@
-/* Estilos suaves, minimalistas y consistentes con el tema de fotografía */
+/* Estilos suaves, minimalistas con foco en rendimiento */
 * { box-sizing: border-box; }
 
 :root {
-    --bg-1: #f7fbff;
-    --bg-2: #f2f6fb;
-    --bg-3: #eef2f7;
     --surface: #ffffff;
-    --text: #253047;
+    --bg: #f6f8fb;
+    --text: #1f2a44;
     --muted: #667085;
     --primary: #0078d7;
     --primary-600: #005a9e;
-    --shadow-sm: 0 3px 12px rgba(16,24,40,0.06);
-    --shadow-md: 0 10px 30px rgba(16,24,40,0.06), 0 2px 8px rgba(16,24,40,0.05);
-    --radius: 14px;
+    --shadow-1: 0 2px 8px rgba(15, 23, 42, 0.06);
+    --shadow-2: 0 6px 20px rgba(15, 23, 42, 0.08);
+    --radius: 12px;
 }
 
 html { scroll-behavior: smooth; }
@@ -23,55 +21,47 @@ body {
     margin: 0;
     color: var(--text);
     line-height: 1.6;
-    background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 48%, var(--bg-3) 100%);
+    background: var(--bg);
 }
 
-/* Contenedor fluido sin cambiar HTML */
-header, .nav, main, footer {
-    max-width: 980px;
-    margin-inline: auto;
-}
+/* Contenido centrado sin tocar el HTML */
+header, .nav, main, footer { max-width: 960px; margin-inline: auto; }
 
-/* Tarjetas/superficies sutiles */
+/* Superficies ligeras y consistentes */
 header, main, .cta, footer {
     background: var(--surface);
     border-radius: var(--radius);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-1);
 }
 
-header { padding: 26px 18px; margin: 26px 16px 12px; animation: fade-in 480ms ease-out both; }
+header { padding: 22px 16px; margin: 22px 14px 10px; }
 
-.nav { margin: 10px 16px; padding: 6px 10px; background: var(--surface); border-radius: 12px; box-shadow: var(--shadow-sm); }
+.nav { margin: 10px 14px; padding: 4px 8px; background: var(--surface); border-radius: 10px; box-shadow: var(--shadow-1); }
 .nav ul {
     display: flex;
-    gap: 18px;
+    gap: 16px;
     justify-content: center;
     list-style: none;
     padding: 6px 8px;
     margin: 0;
 }
 
-/* Subrayado animado en enlaces */
+/* Subrayado sutil, sin animaciones pesadas */
 .nav a {
     text-decoration: none;
     color: var(--primary);
     font-weight: 700;
     position: relative;
     padding: 6px 2px;
-    background-image: linear-gradient(currentColor, currentColor);
-    background-size: 0% 2px;
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    transition: background-size 220ms ease, color 220ms ease;
 }
-.nav a:hover { color: var(--primary-600); background-size: 100% 2px; }
+.nav a:hover { text-decoration: underline; color: var(--primary-600); }
 
 .cta { 
-    margin: 16px; 
-    padding: 12px; 
+    margin: 14px; 
+    padding: 10px; 
     display: flex; 
     flex-wrap: wrap; 
-    gap: 10px; 
+    gap: 8px; 
     justify-content: center; 
 }
 
@@ -83,51 +73,36 @@ button {
     border-radius: 8px;
     cursor: pointer;
     margin: 4px;
-    box-shadow: var(--shadow-sm);
-    transition: transform 120ms ease, box-shadow 220ms ease, background-color 220ms ease;
+    box-shadow: var(--shadow-1);
+    transition: background-color 160ms ease, box-shadow 160ms ease;
 }
-button:hover { background: var(--primary-600); transform: translateY(-1px); box-shadow: var(--shadow-md); }
-button:active { transform: translateY(0); }
+button:hover { background: var(--primary-600); box-shadow: var(--shadow-2); }
 button:focus-visible, .nav a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
-main { 
-    padding: 18px 18px 24px; 
-    margin: 12px 16px 18px; 
-    animation: fade-in 520ms ease-out both;
-}
+main { padding: 16px; margin: 10px 14px 16px; }
 
 .hero {
-    width: min(92%, 760px);
+    width: min(92%, 740px);
     height: auto;
     border-radius: 10px;
-    box-shadow: var(--shadow-md);
-    margin: 18px auto;
+    box-shadow: var(--shadow-2);
+    margin: 16px auto;
     display: block;
     opacity: 0;
-    transform: translateY(8px);
-    animation: fade-up 600ms ease-out 80ms forwards;
+    transform: translateY(4px);
+    animation: fade-up 240ms ease-out 40ms forwards;
 }
 
-footer {
-    padding: 16px;
-    margin: 0 16px 24px;
-    border-top: 1px solid #e7e7e7;
-    animation: fade-in 560ms ease-out both;
-}
+footer { padding: 14px; margin: 0 14px 22px; border-top: 1px solid #e7e7e7; }
 
 img { max-width: 100%; height: auto; display: block; }
 h1, h2 { margin: 8px 0 6px; }
 p { margin: 10px 0; color: var(--muted); }
 
-/* Animaciones sutiles */
-@keyframes fade-in {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
+/* Animación ligera */
 @keyframes fade-up {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* Respeto a usuarios con reducción de movimiento */
