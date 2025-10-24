@@ -11,7 +11,7 @@ document.getElementById("check").addEventListener("click", () => {
     if (navigator.serviceWorker.controller) {
         alert("El Service Worker está activo y controlando la página.");
     } else {
-        alert("El Service Worker aún no controla esta pestaña. Recarga la página si acabas de instalarlo.");
+        alert("El Service Worker aún no controla esta pestaña.");
     }
 });
 
@@ -25,7 +25,7 @@ document.getElementById("btnPermiso").addEventListener("click", async () => {
         const perm = await Notification.requestPermission();
         if (perm === "granted") {
             console.log("Permiso para notificaciones concedido");
-            alert("Permiso concedido. Ahora puedes probar la notificación.");
+            alert("Permiso concedido, ahora puedes probar la notificación.");
         } else if (perm === "denied") {
             alert("Permiso de notificaciones denegado.");
         } else {
@@ -48,7 +48,7 @@ document.getElementById("btnNotificacion").addEventListener("click", async () =>
 
     // Verificar que el SW controle la página
     if (!navigator.serviceWorker.controller) {
-        alert("El SW aún no controla esta pestaña. Recarga la página y vuelve a intentar.");
+        alert("El SW aún no controla esta pestaña, recarga la página.");
         return;
     }
 

@@ -24,7 +24,7 @@ self.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(STATIC_CACHE)
             .then((cache) => {
-                console.log("SW: Cacheando archivos...");
+                console.log("SW: Cacheando archivos");
                 return cache.addAll(cacheAssets);
             })
             .then(() => self.skipWaiting())
@@ -56,9 +56,7 @@ self.addEventListener("message", (event) => {
         self.registration.showNotification("Notificacion local", {
             body: "Esta es una prueba sin servidor push.",
             icon: "logo.png",
-            // badge opcional (blanco/negro 72x72): badge: "logo.png",
             vibrate: [50, 50, 50],
-            tag: "fotografia-sw4",
             renotify: false
         });
     }
